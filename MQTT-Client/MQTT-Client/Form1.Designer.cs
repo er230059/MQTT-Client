@@ -32,13 +32,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.HostTextBox = new System.Windows.Forms.TextBox();
             this.TopicTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.SendButton = new System.Windows.Forms.Button();
+            this.ConnectButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.MessageTextBox = new System.Windows.Forms.TextBox();
             this.SendMessageTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.DisconnectButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -77,25 +78,26 @@
             this.TopicTextBox.Size = new System.Drawing.Size(285, 22);
             this.TopicTextBox.TabIndex = 3;
             // 
-            // button1
+            // SendButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(361, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SendButton.Enabled = false;
+            this.SendButton.Location = new System.Drawing.Point(12, 125);
+            this.SendButton.Name = "SendButton";
+            this.SendButton.Size = new System.Drawing.Size(361, 23);
+            this.SendButton.TabIndex = 4;
+            this.SendButton.Text = "Send";
+            this.SendButton.UseVisualStyleBackColor = true;
+            this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
-            // button2
+            // ConnectButton
             // 
-            this.button2.Location = new System.Drawing.Point(11, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(361, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Connect";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ConnectButton.Location = new System.Drawing.Point(11, 68);
+            this.ConnectButton.Name = "ConnectButton";
+            this.ConnectButton.Size = new System.Drawing.Size(174, 23);
+            this.ConnectButton.TabIndex = 5;
+            this.ConnectButton.Text = "Connect";
+            this.ConnectButton.UseVisualStyleBackColor = true;
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
             // button3
             // 
@@ -105,7 +107,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "Clear";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // MessageTextBox
             // 
@@ -145,18 +147,30 @@
             this.label4.Size = new System.Drawing.Size(0, 19);
             this.label4.TabIndex = 10;
             // 
+            // DisconnectButton
+            // 
+            this.DisconnectButton.Enabled = false;
+            this.DisconnectButton.Location = new System.Drawing.Point(198, 68);
+            this.DisconnectButton.Name = "DisconnectButton";
+            this.DisconnectButton.Size = new System.Drawing.Size(174, 23);
+            this.DisconnectButton.TabIndex = 11;
+            this.DisconnectButton.Text = "Disconnect";
+            this.DisconnectButton.UseVisualStyleBackColor = true;
+            this.DisconnectButton.Click += new System.EventHandler(this.DisconnectButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 501);
+            this.Controls.Add(this.DisconnectButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SendMessageTextBox);
             this.Controls.Add(this.MessageTextBox);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ConnectButton);
+            this.Controls.Add(this.SendButton);
             this.Controls.Add(this.TopicTextBox);
             this.Controls.Add(this.HostTextBox);
             this.Controls.Add(this.label2);
@@ -176,13 +190,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox HostTextBox;
         private System.Windows.Forms.TextBox TopicTextBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button SendButton;
+        private System.Windows.Forms.Button ConnectButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox MessageTextBox;
         private System.Windows.Forms.TextBox SendMessageTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button DisconnectButton;
     }
 }
 

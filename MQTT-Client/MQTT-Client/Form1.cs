@@ -42,7 +42,7 @@ namespace MQTT_Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.SendButton;
         }
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
@@ -50,20 +50,7 @@ namespace MQTT_Client
             if (client != null && client.IsConnected) client.Disconnect();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (SendMessageTextBox.Text.Length == 0)
-            {
-                label4.Text = "No message to send";
-            }
-            else
-            {
-                label4.Text = "";
-                client.Publish(TopicTextBox.Text, Encoding.UTF8.GetBytes(SendMessageTextBox.Text), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void ConnectButton_Click(object sender, EventArgs e)
         {
             if (HostTextBox.Text.Length == 0)
             {
@@ -87,16 +74,42 @@ namespace MQTT_Client
                 }
                 if (client != null && client.IsConnected)
                 {
-                    label4.Text = "";
                     client.Subscribe(new string[] { TopicTextBox.Text }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
-                    button1.Enabled = true;
-                    button2.Enabled = false;
+                    label4.Text = "";
+                    MessageTextBox.Clear();                    
+                    SendButton.Enabled = true;
+                    DisconnectButton.Enabled = true;
+                    ConnectButton.Enabled = false;
                     HostTextBox.Enabled = false;
                     TopicTextBox.Enabled = false;
                 }
             }
         }
-        private void button3_Click(object sender, EventArgs e)
+
+        private void DisconnectButton_Click(object sender, EventArgs e)
+        {
+            if (client != null && client.IsConnected) client.Disconnect();
+            SendButton.Enabled = false;
+            DisconnectButton.Enabled = false;
+            ConnectButton.Enabled = true;
+            HostTextBox.Enabled = true;
+            TopicTextBox.Enabled = true;
+        }
+
+        private void SendButton_Click(object sender, EventArgs e)
+        {
+            if (SendMessageTextBox.Text.Length == 0)
+            {
+                label4.Text = "No message to send";
+            }
+            else
+            {
+                label4.Text = "";
+                client.Publish(TopicTextBox.Text, Encoding.UTF8.GetBytes(SendMessageTextBox.Text), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+            }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
         {
             MessageTextBox.Clear();
         }
