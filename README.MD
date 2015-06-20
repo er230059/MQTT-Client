@@ -2,7 +2,7 @@
 MQTT Client implemented by C# and Paho project
 
 #Usage
-Use Mosquitto [http://mosquitto.org/](http://mosquitto.org/) build a localhost MQTT broker server, or use Mosquitto's public MQTT server: [test.mosquitto.org](test.mosquitto.org)
+Use [Mosquitto](http://mosquitto.org/) build a localhost MQTT broker server, or use Mosquitto's public MQTT server: [test.mosquitto.org](http://test.mosquitto.org)
 
 #Requirements
 Microsoft .NET Framework 4 to execution  
