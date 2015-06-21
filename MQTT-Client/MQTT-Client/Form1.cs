@@ -42,7 +42,8 @@ namespace MQTT_Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.AcceptButton = this.SendButton;
+            this.AcceptButton = this.ConnectButton;
+            QosComboBox.SelectedIndex = 0;
         }
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
@@ -52,19 +53,20 @@ namespace MQTT_Client
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
+            int port;
             if (HostTextBox.Text.Length == 0)
             {
                 label4.Text = "Invild host";
             }
-            else if (TopicTextBox.Text.Length == 0)
+            else if (!Int32.TryParse(PortTextBox.Text, out port))
             {
-                label4.Text = "You need have topic to subscribe";
+                label4.Text = "Invild port";
             }
             else
-            {
+            {                
                 try
                 {
-                    client = new MqttClient(HostTextBox.Text);
+                    client = new MqttClient(HostTextBox.Text, port, false, null);
                     client.Connect(Guid.NewGuid().ToString());
                     client.MqttMsgPublishReceived += new MqttClient.MqttMsgPublishEventHandler(client_MqttMsgPublishReceived);
                 }
@@ -74,14 +76,15 @@ namespace MQTT_Client
                 }
                 if (client != null && client.IsConnected)
                 {
-                    client.Subscribe(new string[] { TopicTextBox.Text }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+                    this.AcceptButton = this.PublishButton;
                     label4.Text = "";
-                    MessageTextBox.Clear();                    
-                    SendButton.Enabled = true;
+                    MessageTextBox.Clear();
+                    SubscribeButton.Enabled = true;
+                    PublishButton.Enabled = true;
                     DisconnectButton.Enabled = true;
                     ConnectButton.Enabled = false;
                     HostTextBox.Enabled = false;
-                    TopicTextBox.Enabled = false;
+                    PortTextBox.Enabled = false;                    
                 }
             }
         }
@@ -89,23 +92,40 @@ namespace MQTT_Client
         private void DisconnectButton_Click(object sender, EventArgs e)
         {
             if (client != null && client.IsConnected) client.Disconnect();
-            SendButton.Enabled = false;
+            SubscribeButton.Enabled = false;
+            PublishButton.Enabled = false;
             DisconnectButton.Enabled = false;
             ConnectButton.Enabled = true;
             HostTextBox.Enabled = true;
-            TopicTextBox.Enabled = true;
+            PortTextBox.Enabled = true;
         }
 
-        private void SendButton_Click(object sender, EventArgs e)
+        private void SubscribeButton_Click(object sender, EventArgs e)
         {
-            if (SendMessageTextBox.Text.Length == 0)
+            if (SubTopicTextBox.Text.Length == 0)
+            {
+                label4.Text = "Subscribe topic can't be empty";
+            }
+            else
+            {
+                client.Subscribe(new string[] { SubTopicTextBox.Text }, new byte[] { (byte)QosComboBox.SelectedIndex });
+            }
+        }
+
+        private void PublishButton_Click(object sender, EventArgs e)
+        {
+            if (PubMessageTextBox.Text.Length == 0)
             {
                 label4.Text = "No message to send";
+            }
+            else if (PubTopicTextBox.Text.Length == 0)
+            {
+                label4.Text = "Publish topic can't be empty";
             }
             else
             {
                 label4.Text = "";
-                client.Publish(TopicTextBox.Text, Encoding.UTF8.GetBytes(SendMessageTextBox.Text), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+                client.Publish(SubTopicTextBox.Text, Encoding.UTF8.GetBytes(PubMessageTextBox.Text), (byte)QosComboBox.SelectedIndex, false);
             }
         }
 
