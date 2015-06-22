@@ -81,6 +81,7 @@ namespace MQTT_Client
                     MessageTextBox.Clear();
                     SubscribeButton.Enabled = true;
                     PublishButton.Enabled = true;
+                    UnsubscribeButton.Enabled = true;
                     DisconnectButton.Enabled = true;
                     ConnectButton.Enabled = false;
                     HostTextBox.Enabled = false;
@@ -94,10 +95,12 @@ namespace MQTT_Client
             if (client != null && client.IsConnected) client.Disconnect();
             SubscribeButton.Enabled = false;
             PublishButton.Enabled = false;
+            UnsubscribeButton.Enabled = false;
             DisconnectButton.Enabled = false;
-            ConnectButton.Enabled = true;
+            ConnectButton.Enabled = true;            
             HostTextBox.Enabled = true;
             PortTextBox.Enabled = true;
+            SubListBox.Items.Clear();
         }
 
         private void SubscribeButton_Click(object sender, EventArgs e)
@@ -108,7 +111,9 @@ namespace MQTT_Client
             }
             else
             {
+                label4.Text = "";
                 client.Subscribe(new string[] { SubTopicTextBox.Text }, new byte[] { (byte)QosComboBox.SelectedIndex });
+                SubListBox.Items.Add(SubTopicTextBox.Text);
             }
         }
 
@@ -122,16 +127,34 @@ namespace MQTT_Client
             {
                 label4.Text = "Publish topic can't be empty";
             }
+            else if (PubTopicTextBox.Text.IndexOf('#') != -1)
+            {
+                label4.Text = "Publish topic can't include wildcard(#)";
+            }
             else
             {
                 label4.Text = "";
-                client.Publish(SubTopicTextBox.Text, Encoding.UTF8.GetBytes(PubMessageTextBox.Text), (byte)QosComboBox.SelectedIndex, false);
+                client.Publish(PubTopicTextBox.Text, Encoding.UTF8.GetBytes(PubMessageTextBox.Text), (byte)QosComboBox.SelectedIndex, RetainCheckBox.Checked);
             }
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
             MessageTextBox.Clear();
+        }
+
+        private void UnsubscribeButton_Click(object sender, EventArgs e)
+        {
+            if (SubListBox.SelectedItem == null)
+            {
+                label4.Text = "Select topic to unscribe";
+            }
+            else
+            {
+                label4.Text = "";
+                client.Unsubscribe(new string[] { SubListBox.SelectedItem.ToString() });
+                SubListBox.Items.Remove(SubListBox.SelectedItem);
+            }
         }
     }
 }
