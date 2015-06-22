@@ -127,9 +127,9 @@ namespace MQTT_Client
             {
                 label4.Text = "Publish topic can't be empty";
             }
-            else if (PubTopicTextBox.Text.IndexOf('#') != -1)
+            else if (PubTopicTextBox.Text.IndexOf('#') != -1 || PubTopicTextBox.Text.IndexOf('+') != -1)
             {
-                label4.Text = "Publish topic can't include wildcard(#)";
+                label4.Text = "Publish topic can't include wildcard(# , +)";
             }
             else
             {
