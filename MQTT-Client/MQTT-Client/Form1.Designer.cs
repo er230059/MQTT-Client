@@ -58,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(66, 15);
+            this.label1.Location = new System.Drawing.Point(72, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 19);
             this.label1.TabIndex = 0;
@@ -68,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(-1, 92);
+            this.label2.Location = new System.Drawing.Point(14, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 19);
             this.label2.TabIndex = 1;
@@ -79,7 +79,7 @@
             this.HostTextBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.HostTextBox.Location = new System.Drawing.Point(125, 11);
             this.HostTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.HostTextBox.MaxLength = 40;
+            this.HostTextBox.MaxLength = 128;
             this.HostTextBox.Name = "HostTextBox";
             this.HostTextBox.Size = new System.Drawing.Size(332, 23);
             this.HostTextBox.TabIndex = 2;
@@ -89,7 +89,7 @@
             this.SubTopicTextBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.SubTopicTextBox.Location = new System.Drawing.Point(125, 88);
             this.SubTopicTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SubTopicTextBox.MaxLength = 35;
+            this.SubTopicTextBox.MaxLength = 128;
             this.SubTopicTextBox.Name = "SubTopicTextBox";
             this.SubTopicTextBox.Size = new System.Drawing.Size(332, 23);
             this.SubTopicTextBox.TabIndex = 6;
@@ -148,7 +148,7 @@
             this.PubMessageTextBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.PubMessageTextBox.Location = new System.Drawing.Point(125, 163);
             this.PubMessageTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.PubMessageTextBox.MaxLength = 50;
+            this.PubMessageTextBox.MaxLength = 128;
             this.PubMessageTextBox.Name = "PubMessageTextBox";
             this.PubMessageTextBox.Size = new System.Drawing.Size(448, 23);
             this.PubMessageTextBox.TabIndex = 8;
@@ -157,7 +157,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(34, 167);
+            this.label3.Location = new System.Drawing.Point(42, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 19);
             this.label3.TabIndex = 9;
@@ -200,7 +200,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(70, 52);
+            this.label5.Location = new System.Drawing.Point(75, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 19);
             this.label5.TabIndex = 13;
@@ -223,7 +223,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(-3, 129);
+            this.label6.Location = new System.Drawing.Point(12, 125);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 19);
             this.label6.TabIndex = 14;
@@ -234,7 +234,7 @@
             this.PubTopicTextBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.PubTopicTextBox.Location = new System.Drawing.Point(125, 125);
             this.PubTopicTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.PubTopicTextBox.MaxLength = 35;
+            this.PubTopicTextBox.MaxLength = 128;
             this.PubTopicTextBox.Name = "PubTopicTextBox";
             this.PubTopicTextBox.Size = new System.Drawing.Size(448, 23);
             this.PubTopicTextBox.TabIndex = 15;
@@ -268,11 +268,13 @@
             // 
             this.SubListBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.SubListBox.FormattingEnabled = true;
+            this.SubListBox.HorizontalScrollbar = true;
             this.SubListBox.ItemHeight = 16;
             this.SubListBox.Location = new System.Drawing.Point(586, 40);
             this.SubListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SubListBox.Name = "SubListBox";
-            this.SubListBox.Size = new System.Drawing.Size(179, 580);
+            this.SubListBox.ScrollAlwaysVisible = true;
+            this.SubListBox.Size = new System.Drawing.Size(186, 580);
             this.SubListBox.TabIndex = 18;
             // 
             // label8
@@ -292,7 +294,7 @@
             this.UnsubscribeButton.Location = new System.Drawing.Point(586, 632);
             this.UnsubscribeButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.UnsubscribeButton.Name = "UnsubscribeButton";
-            this.UnsubscribeButton.Size = new System.Drawing.Size(179, 31);
+            this.UnsubscribeButton.Size = new System.Drawing.Size(186, 31);
             this.UnsubscribeButton.TabIndex = 20;
             this.UnsubscribeButton.Text = "Unsubscribe";
             this.UnsubscribeButton.UseVisualStyleBackColor = true;
@@ -302,7 +304,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(350, 53);
+            this.label9.Location = new System.Drawing.Point(353, 49);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 19);
             this.label9.TabIndex = 21;
@@ -311,7 +313,7 @@
             // RetainCheckBox
             // 
             this.RetainCheckBox.AutoSize = true;
-            this.RetainCheckBox.Location = new System.Drawing.Point(412, 57);
+            this.RetainCheckBox.Location = new System.Drawing.Point(415, 53);
             this.RetainCheckBox.Name = "RetainCheckBox";
             this.RetainCheckBox.Size = new System.Drawing.Size(15, 14);
             this.RetainCheckBox.TabIndex = 22;
@@ -321,7 +323,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 701);
+            this.ClientSize = new System.Drawing.Size(784, 701);
             this.Controls.Add(this.RetainCheckBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.UnsubscribeButton);
